@@ -1,12 +1,14 @@
 package com.sainsbury.serversidetest.bean;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.math.RoundingMode;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Class that represent a item on the self
@@ -14,9 +16,9 @@ import lombok.Getter;
  * @author Patrick
  *
  */
-@Getter 
-public class Item {
-	private static final int DECIMAL_PLACE = 2;
+@Getter @Setter
+public class Product {
+	private static final int DEFAULT_PERSSION = 3;
 	
 	private String title;
 
@@ -28,17 +30,17 @@ public class Item {
 	
 	private String description;
 
-	public Item(String title, String description, String unitPrice) {
+	public Product() {
+		super();
+	}
+	
+	public Product(String title, String description, String unitPrice) {
 		this.title = title;
 		this.description = description;
-		this.unitPrice = new BigDecimal(unitPrice);
-
-		if(this.unitPrice.scale() > DECIMAL_PLACE) {
-			this.unitPrice = this.unitPrice.setScale(DECIMAL_PLACE, RoundingMode.UP);
-		}
+		this.unitPrice = new BigDecimal(unitPrice, new MathContext(DEFAULT_PERSSION, RoundingMode.UP));
 	}
 
-	public Item(String title, String description, String unitPrice, int kcalPer100g) {
+	public Product(String title, String description, String unitPrice, Integer kcalPer100g) {
 		this(title, description, unitPrice);
 		this.kcalPer100g = kcalPer100g;
 	}

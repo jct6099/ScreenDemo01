@@ -10,35 +10,29 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Component;
 
 import com.sainsbury.serversidetest.config.AppConfig;
-import com.sainsbury.serversidetest.config.LoadConfig;
-import com.sainsbury.serversidetest.exception.ServiceNotAvailableException;
+import com.sainsbury.serversidetest.exception.PageNotFoundException;
 
 /**
  * Read HTML content of a screen with a URL
  *   
  * @author Patrick
  */
+@Component
 public class ScreenReader {
 	
-	private static AppConfig config;
-	
-	static {
-		@SuppressWarnings("resource")
-		ApplicationContext context = new AnnotationConfigApplicationContext(LoadConfig.class);
-        config = (AppConfig) context.getBean("appConfig");
-	}
-
 	/**
-	 * Get HTML content as string 
+	 * Get HTML contents as string 
 	 * 
+	 * @param url page URL
 	 * @return a string of HTML
 	 * @throws IOException
 	 */
-	public String getContents() throws IOException {
+	public String getContents(final String url) throws IOException {
 		StringBuilder result = new StringBuilder();
-		URLConnection conn = new URL(config.getUrl()).openConnection();
+		URLConnection conn = new URL(url).openConnection();
 
 		try(BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
 			String line;
@@ -53,20 +47,25 @@ public class ScreenReader {
 	/**
 	 * Get HTML content as parsed document
 	 * 
+	 * @param url page URL
 	 * @return the HTML document
 	 */
-	public Document getDocument() {
+	public Document getDocument(final String url) {
 		try {
-			String htmlContent = getContents();
-			return Jsoup.parse(htmlContent);
+			String htmlContent = getContents(url);
+			return Jsoup.parse(htmlContent, url);
 		} catch(IOException ex) {
-			throw new ServiceNotAvailableException(ex.getMessage());
+			throw new PageNotFoundException(ex.getMessage());
 		}
 	}
 
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		String url = (String) context.getBean("url");
+
 		try {
-			System.out.println(new ScreenReader().getDocument());
+			System.out.println(new ScreenReader().getDocument(url));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
