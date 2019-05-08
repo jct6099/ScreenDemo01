@@ -3,7 +3,7 @@ package com.sainsbury.serversidetest.exception;
 /**
  * Custom exception for page not found
  * 
- * @author szeto
+ * @author szetop
  */
 public class PageNotFoundException extends RuntimeException {
 

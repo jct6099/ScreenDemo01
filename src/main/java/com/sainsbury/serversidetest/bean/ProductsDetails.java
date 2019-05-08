@@ -10,7 +10,7 @@ import lombok.Getter;
 /**
  * A class that hold a list of products and the total cost/vat
  * 
- * @author Patrick
+ * @author szetop
  */
 @Getter
 public class ProductsDetails {

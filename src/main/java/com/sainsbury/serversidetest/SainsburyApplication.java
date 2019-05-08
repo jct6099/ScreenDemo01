@@ -10,6 +10,8 @@ import com.sainsbury.serversidetest.service.ScraperService;
 
 /**
  * Main application class to run the Sainsbury screen scraper
+ * 
+ * @author szetop
  */
 public class SainsburyApplication 
 {

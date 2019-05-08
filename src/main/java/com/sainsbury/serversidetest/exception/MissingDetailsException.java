@@ -3,7 +3,7 @@ package com.sainsbury.serversidetest.exception;
 /**
  * Custom exception for missing product details
  * 
- * @author szeto
+ * @author szetop
  */
 public class MissingDetailsException extends RuntimeException {
 

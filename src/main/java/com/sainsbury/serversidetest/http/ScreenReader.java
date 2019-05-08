@@ -18,7 +18,7 @@ import com.sainsbury.serversidetest.exception.PageNotFoundException;
 /**
  * Read HTML contents of a screen and return a string or a DOM
  *   
- * @author Patrick
+ * @author szetop
  */
 @Component
 public class ScreenReader {

@@ -11,7 +11,8 @@ import lombok.Getter;
  * A class that represent the total cost & vat
  * 
  * Note: Used RoundingMode.HALF_UP to address a strange precision issue
- * @author Patrick
+ * 
+ * @author szetop
  */
 @Getter
 public class TotalCost {

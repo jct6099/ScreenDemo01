@@ -13,7 +13,7 @@ import lombok.Setter;
 /**
  * Class that represent a product on the self
  * 
- * @author Patrick
+ * @author szetop
  */
 @Getter @Setter
 public class Product {

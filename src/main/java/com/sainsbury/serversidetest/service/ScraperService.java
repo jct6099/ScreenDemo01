@@ -21,7 +21,7 @@ import lombok.Setter;
 /**
  * Sainbury product scraping service
  * 
- * @author szeto
+ * @author szetop
  */
 @Component
 @Setter
