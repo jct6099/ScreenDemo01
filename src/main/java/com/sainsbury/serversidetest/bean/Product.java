@@ -11,10 +11,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Class that represent a item on the self
+ * Class that represent a product on the self
  * 
  * @author Patrick
- *
  */
 @Getter @Setter
 public class Product {

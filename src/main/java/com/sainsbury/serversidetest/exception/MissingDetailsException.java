@@ -1,15 +1,15 @@
 package com.sainsbury.serversidetest.exception;
 
 /**
- * Custom exception for page not found
+ * Custom exception for missing product details
  * 
  * @author szeto
  */
-public class PageNotFoundException extends RuntimeException {
+public class MissingDetailsException extends RuntimeException {
 
 	private static final long serialVersionUID = -7032467326764264073L;
 
-	public PageNotFoundException(String message) {
+	public MissingDetailsException(String message) {
 		super(message);
 	}
 

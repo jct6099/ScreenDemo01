@@ -7,6 +7,12 @@ import com.google.gson.GsonBuilder;
 
 import lombok.Getter;
 
+/**
+ * A class that represent the total cost & vat
+ * 
+ * Note: Used RoundingMode.HALF_UP to address a strange precision issue
+ * @author Patrick
+ */
 @Getter
 public class TotalCost {
 	private static final BigDecimal VAT_PERCENTAGE = new BigDecimal(".2");

@@ -7,6 +7,11 @@ import com.google.gson.GsonBuilder;
 
 import lombok.Getter;
 
+/**
+ * A class that hold a list of products and the total cost/vat
+ * 
+ * @author Patrick
+ */
 @Getter
 public class ProductsDetails {
 

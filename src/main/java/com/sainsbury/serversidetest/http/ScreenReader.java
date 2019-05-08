@@ -16,7 +16,7 @@ import com.sainsbury.serversidetest.config.AppConfig;
 import com.sainsbury.serversidetest.exception.PageNotFoundException;
 
 /**
- * Read HTML content of a screen with a URL
+ * Read HTML contents of a screen and return a string or a DOM
  *   
  * @author Patrick
  */
@@ -30,7 +30,7 @@ public class ScreenReader {
 	 * @return a string of HTML
 	 * @throws IOException
 	 */
-	public String getContents(final String url) throws IOException {
+	public String getHtmlContents(final String url) throws IOException {
 		StringBuilder result = new StringBuilder();
 		URLConnection conn = new URL(url).openConnection();
 
@@ -52,7 +52,7 @@ public class ScreenReader {
 	 */
 	public Document getDocument(final String url) {
 		try {
-			String htmlContent = getContents(url);
+			String htmlContent = getHtmlContents(url);
 			return Jsoup.parse(htmlContent, url);
 		} catch(IOException ex) {
 			throw new PageNotFoundException(ex.getMessage());

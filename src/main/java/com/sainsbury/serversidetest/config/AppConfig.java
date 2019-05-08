@@ -10,6 +10,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 /**
+ * An config class for loading properties from file
+ * 
  * @author Patrick
  */
 @Configuration
