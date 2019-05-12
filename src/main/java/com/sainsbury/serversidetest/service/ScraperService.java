@@ -28,8 +28,8 @@ import lombok.Setter;
 public class ScraperService {
 	
 	private static final String PRICE_REGEX = "\\d+(\\.\\d+)?";
-	private static final String LEFT_KCAL_REGEX = "(\\d+)\\s*kcal";
-	private static final String RIGHT_KCAL_REGEX = "kcal\\s*(\\d+)";
+	private static final String KCAL_SUFFIX_REGEX = "(\\d+)\\s*kcal";
+	private static final String KCAL_PREFIX_REGEX = "kcal\\s*(\\d+)";
 	private ScreenReader screenReader;
 
 	/**
@@ -139,9 +139,9 @@ public class ScraperService {
 	 */
 	private OptionalInt getKcalPer100g(final Element document) {
 		final String contents = document.select(".nutritionTable").text();
-		final OptionalInt kcal = getKcalMatch(LEFT_KCAL_REGEX, contents);
+		final OptionalInt kcal = getKcalMatch(KCAL_SUFFIX_REGEX, contents);
 		
-		return kcal.isPresent() ? kcal: getKcalMatch(RIGHT_KCAL_REGEX, contents);
+		return kcal.isPresent() ? kcal: getKcalMatch(KCAL_PREFIX_REGEX, contents);
 	}
 
 	/**

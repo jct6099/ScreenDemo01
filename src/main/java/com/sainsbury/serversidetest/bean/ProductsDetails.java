@@ -15,7 +15,7 @@ import lombok.Getter;
 @Getter
 public class ProductsDetails {
 
-	private List<Product> results = new ArrayList<>();
+	private List<Product> products = new ArrayList<>();
 	
 	private TotalCost total = new TotalCost();
 
@@ -25,7 +25,7 @@ public class ProductsDetails {
 	
 	public void add(Product product) {
 		if (product != null) {
-			this.results.add(product);
+			this.products.add(product);
 			this.total.add(product.getUnitPrice());
 		}
 	}
