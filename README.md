@@ -38,8 +38,3 @@ Run with maven:
 ```
 mvn clean test
 ```
-## How to run tests
-Run with maven:
-```
-mvn clean test
-```
